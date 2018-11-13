@@ -1,0 +1,6 @@
+"editor.formatOnSave": true,
+"eslint.validate": [
+  "javascript",
+  "javascriptreact",
+  "vue"
+]

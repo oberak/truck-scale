@@ -8,12 +8,12 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: 'standard',
+  extends: ['standard', 'plugin:vue/essential', 'prettier'],
   globals: {
     __static: true
   },
   plugins: [
-    'html'
+    'html', 'vue'
   ],
   'rules': {
     // allow paren-less arrow functions
