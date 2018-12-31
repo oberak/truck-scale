@@ -44,17 +44,17 @@
 </template>
 
 <script>
-  import SystemInformation from './WelcomeView/SystemInformation'
+  import SystemInformation from './WelcomeView/SystemInformation';
 
   export default {
     name: 'welcome',
     components: { SystemInformation },
     methods: {
-      open (link) {
-        this.$electron.shell.openExternal(link)
-      }
-    }
-  }
+      open(link) {
+        this.$electron.shell.openExternal(link);
+      },
+    },
+  };
 </script>
 
 <style scoped>

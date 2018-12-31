@@ -35,17 +35,17 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         electron: process.versions['atom-shell'],
         name: 'landing-page',
         node: process.versions.node,
         path: '/',
         platform: require('os').platform(),
-        vue: require('vue/package.json').version
-      }
-    }
-  }
+        vue: require('vue/package.json').version,
+      };
+    },
+  };
 </script>
 
 <style scoped>
