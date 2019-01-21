@@ -11,9 +11,14 @@ export default new Router({
       component: require('@/components/WelcomeView').default,
     },
     {
-      path: '/inspire',
-      name: 'inspire',
-      component: require('@/components/InspireView').default,
+      path: '/truck/view',
+      name: 'truck-view',
+      component: require('@/components/TruckView').default,
+    },
+    {
+      path: '/client',
+      name: 'Client',
+      component: require('@/components/Client').default,
     },
     {
       path: '*',
