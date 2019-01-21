@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
+import io from 'socket.io-client'
 
 /**
  * Set `__static` path to static files in production
@@ -43,6 +44,27 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+const socket = io('http://127.0.0.1:3000')
+socket.on('connect', () => {
+  console.log('connected to server')
+  // send data to ts-server and recevie data
+  socket.emit('data', 'sample data from app', (data) => {
+    console.log('received:', data)
+  })
+})
+setInterval(() => { // test code
+  // receive from app or serial moduele(using ipc, store)
+  // send data to ts-server
+  socket.emit('weight', { weihgt: Math.round(Math.random() * 1000), uint: 'Kg', mcno: 1 })
+}, 5000)
+
+// receive from ts-server
+socket.on('data', (data) => {
+  console.log('receive data', data)
+  // need to call app module(use ipc, store)
+})
+socket.on('disconnect', () => console.log('disconnected'))
 
 /**
  * Auto Updater
