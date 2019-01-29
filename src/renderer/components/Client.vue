@@ -2,7 +2,15 @@
 <v-layout row justify-center>
   <v-card>
     <v-card-title>
-      <h1>CLIENT</h1>
+      <h1>Clients</h1>
+      <v-spacer></v-spacer>
+       <v-text-field
+        v-model="search"
+        append-icon="search"
+        label="Search by Name"
+        single-line
+        hide-details
+      ></v-text-field>
       <v-spacer></v-spacer>
       <v-btn slot="activator" color="primary" dark @click="dialog = true">ADD</v-btn>
     </v-card-title>
@@ -11,6 +19,7 @@
       :items="customers"
       :pagination.sync="pagination"
       :total-items="total"
+      :search="search"
       :loading="loading"
       class="elevation-1"
     >
@@ -48,15 +57,15 @@
               <v-layout wrap>
                 <v-flex xs12>
                   <v-text-field 
-                  label="Customer Name *"
+                  label="Clients Name *"
                   v-model="form.name"
-                  :rules="[v => !!v || 'Customer work is required']"
+                  :rules="[v => !!v || 'Client Name is required']"
                   required
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs12>
                   <v-text-field 
-                  label="Customer Phone *"
+                  label="Clients Phone *"
                   v-model="form.phone"
                   :rules="[v => !!v || 'Customer work is required']"
                   required
@@ -64,7 +73,7 @@
                 </v-flex>
                 <v-flex xs12>
                   <v-text-field 
-                  label="Customer Address *"
+                  label="Clients Address *"
                   v-model="form.address"
                   :rules="[v => !!v || 'Customer work is required']"
                   required
@@ -168,6 +177,7 @@ export default {
       if (this.editIdx === -1) { // ADD
         Client.findOne({ name: this.form.name }).then((doc) => {
           if (doc) {
+            this.$refs.name.focus()
             return this.msg(`Client - [${this.form.name}] already exists.`, 'error', 5000)
           }
           Client.create(this.form).then(() => {

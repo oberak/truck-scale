@@ -11,14 +11,24 @@ export default new Router({
       component: require('@/components/WelcomeView').default,
     },
     {
-      path: '/truck/view',
+      path: '/manage/trucks',
       name: 'truck-view',
       component: require('@/components/TruckView').default,
     },
     {
-      path: '/client',
-      name: 'Client',
+      path: '/manage/clients',
+      name: 'client-view',
       component: require('@/components/Client').default,
+    },
+    {
+      path: '/manage/materials',
+      name: 'material-view',
+      component: require('@/components/MaterialV').default,
+    },
+    {
+      path: '/weighing/initial',
+      name: 'initial-weight',
+      component: require('@/components/InitialWeightV').default,
     },
     {
       path: '*',
